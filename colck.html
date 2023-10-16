@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date and Time Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        #clock {
+            font-size: 2rem;
+        }
+        #date {
+            font-size: 1.5rem;
+            border: 2px solid blue;
+            width: 300px;
+            margin: 0px 0px 5% 40%;
+            background: rgb(0,4,36);
+            background: linear-gradient(175deg, rgba(0,4,36,1) 0%, rgba(101, 119, 223, 0.544) 42%, rgba(0,212,255,1) 89%);
+            padding: 10px 0px;
+        }
+        #clock{
+            font-size: 1.5rem;
+            /* border: 2px solid blue; */
+            width: 300px;
+            background-color: blue;
+            color: white;
+        }
+        .wrap{
+            margin: 0px 0px 5% 40%;
+
+            max-width: 300px;
+  padding: 1rem;
+  position: relative;
+  background: linear-gradient(to right, rgb(0, 225, 255), yellow, rgb(250, 9, 129));
+  padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Date and Time Display</h1>
+      <div id="date"></div>
+    <div class="wrap">
+        <div id="clock"></div>
+    </div>
+  
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateFormatted = now.toLocaleDateString(undefined, options);
+            const timeString = now.toLocaleTimeString();
+
+            document.getElementById("clock").textContent = timeString;
+            document.getElementById("date").textContent = dateFormatted;
+        }
+
+        // Update the clock and date immediately and then every second
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
